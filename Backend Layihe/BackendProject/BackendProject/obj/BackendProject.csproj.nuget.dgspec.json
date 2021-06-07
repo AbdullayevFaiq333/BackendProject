@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\Backend Layihe\\BackendProject\\BackendProject\\BackendProject.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\BackendProject\\Backend Layihe\\BackendProject\\BackendProject\\BackendProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\Backend Layihe\\BackendProject\\BackendProject\\BackendProject.csproj": {
+    "C:\\Users\\Admin\\Desktop\\BackendProject\\Backend Layihe\\BackendProject\\BackendProject\\BackendProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Backend Layihe\\BackendProject\\BackendProject\\BackendProject.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\BackendProject\\Backend Layihe\\BackendProject\\BackendProject\\BackendProject.csproj",
         "projectName": "BackendProject",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\Backend Layihe\\BackendProject\\BackendProject\\BackendProject.csproj",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\BackendProject\\Backend Layihe\\BackendProject\\BackendProject\\BackendProject.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\Backend Layihe\\BackendProject\\BackendProject\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\BackendProject\\Backend Layihe\\BackendProject\\BackendProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1792,11 +1792,11 @@ textarea {
 /*  8. Testimonial CSS
 /*----------------------------------------*/
 .testimonial-area{
-    background: url(../img/testimonial/testimonial-bg.jpg);
+    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    background-attachment: fixed;
+    
     position: relative;
 }
 .testimonial-area:after{

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "K8Ob+tOe0SVoOi98trKxCkTblLlKg7VTdGVuIsXhVkYQESgTDzB6v99RFUl12R1ymg5kixluVlnnGYaexjVgYA==",
+  "dgSpecHash": "NRMIgz93dRyyYMKy5LsQFhrDwFr5mJhqlg7lWfwmjugwmwgIjUUsD4eJNx1Q+Iw98wAhzMl0kupot4Ets2WRQQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\Backend Layihe\\BackendProject\\BackendProject\\BackendProject.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\BackendProject\\Backend Layihe\\BackendProject\\BackendProject\\BackendProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

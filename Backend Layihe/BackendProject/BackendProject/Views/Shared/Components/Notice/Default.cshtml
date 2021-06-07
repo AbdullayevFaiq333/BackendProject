@@ -1,0 +1,49 @@
+﻿@model NoticeViewModel;
+
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="notice-right-wrapper mb-25 pb-25">
+            <h3>@Model.NoticeVideo.Title</h3>
+            <div class="notice-video" style="background: rgba(0, 0, 0, 0) url(../img/notice/@Model.NoticeVideo.Image) repeat scroll 0 0">
+                <div class="video-icon video-hover">
+                    <a class="video-popup" href="https://www.youtube.com/watch?v=to6Ghf8UL7o">
+                        <i class="zmdi zmdi-play"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="notice-left-wrapper">
+            <h3>notice board</h3>
+            <div class="notice-left">
+                @foreach (NoticeBoard noticeBoard in Model.NoticeBoards)
+                {
+                    <div class="single-notice-left mb-23 pb-20">
+                        <h4>@noticeBoard.Time.ToString("dd MMMM , yyyy")</h4>
+                        <p>@noticeBoard.Description</p>
+                    </div>
+                }
+
+                @*<div class="single-notice-left hidden-sm mb-23 pb-20">
+                    <h4>4, June 2017</h4>
+                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
+                </div>
+                <div class="single-notice-left pb-70">
+                    <h4>3, June 2017</h4>
+                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
+                </div>
+                <div class="single-notice-left mb-23 pb-20">
+                    <h4>5, June 2017</h4>
+                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
+                </div>
+                <div class="single-notice-left hidden-sm mb-23 pb-20">
+                    <h4>4, June 2017</h4>
+                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
+                </div>
+                <div class="single-notice-left pb-70">
+                    <h4>3, June 2017</h4>
+                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
+                </div>*@
+            </div>
+        </div>
+    </div>
