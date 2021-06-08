@@ -312,3 +312,10 @@ C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProje
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Teacher\Detail.cshtml.g.cs
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Event\Index.cshtml.g.cs
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Event\Detail.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
