@@ -27,5 +27,10 @@ namespace BackendProject.DAL
         public DbSet<Testimonial> Testimonial { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<BlogDetail> BlogDetails { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<TeacherDetail> TeacherDetails { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<Banner> Banners { get; set; }
     }
 }

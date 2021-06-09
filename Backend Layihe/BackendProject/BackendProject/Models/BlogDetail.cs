@@ -17,6 +17,7 @@ namespace BackendProject.Models
 
         public string Title { get; set; }
         public string LastDescription { get; set; }
+        public bool IsDeleted { get; set; }
 
         [ForeignKey("Blog")]
         public int BlogId { get; set; }

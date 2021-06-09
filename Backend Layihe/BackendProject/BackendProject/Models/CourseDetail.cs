@@ -21,6 +21,7 @@ namespace BackendProject.Models
         public int Students { get; set; }
         public string Assesments { get; set; }
         public double CourseFee { get; set; }
+        public bool IsDeleted { get; set; }
 
         [ForeignKey("Course")]
         public int CourseId { get; set; }

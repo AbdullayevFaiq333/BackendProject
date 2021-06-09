@@ -16,6 +16,7 @@ namespace BackendProject.Models
         public DateTime Time { get; set; }
         public int MessageCount { get; set; }
         public string MainDescription { get; set; }
+        public bool IsDeleted { get; set; }
 
         public BlogDetail BlogDetail { get; set; }
     }
