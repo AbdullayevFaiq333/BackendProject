@@ -43,7 +43,10 @@ namespace BackendProject
 
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer(connectionString);
+                options.UseSqlServer(connectionString,builder=>
+                {
+                    builder.MigrationsAssembly(nameof(BackendProject));
+                });
             });
 
             services.AddControllersWithViews();
@@ -68,6 +71,7 @@ namespace BackendProject
             app.UseRouting();
 
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

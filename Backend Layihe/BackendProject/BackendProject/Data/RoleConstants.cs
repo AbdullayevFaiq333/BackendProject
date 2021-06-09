@@ -8,7 +8,7 @@ namespace BackendProject.Data
     public static class RoleConstants
     {
         public const string AdminRole = "Admin";
-        public const string SupervisorRole = "CourseModerator";
-        public const string MemberRole = "User";
+        public const string CourseModeratorRole = "CourseModerator";
+        public const string UserRole = "User";
     }
 }

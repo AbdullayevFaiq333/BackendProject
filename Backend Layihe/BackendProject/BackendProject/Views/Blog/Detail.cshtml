@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Detail";
+    BlogDetail blogDetail = Model;
 }
 
 <!-- Banner Area Start -->
@@ -27,19 +28,19 @@
             <div class="col-md-8">
                 <div class="blog-details">
                     <div class="blog-details-img">
-                        <img src="~/img/blog/blog-detail.jpg" alt="blog-details">
+                        <img src="~/img/blog/@blogDetail.Blog.Image" alt="blog-details">
                     </div>
                     <div class="blog-details-content">
-                        <h2>I must explain to you how all this a mistaken idea </h2>
-                        <h6>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</h6>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human haness pcias unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque sa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam volutatem quia voluptas sit asnatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui </p>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human haness pcias unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</p>
-                        <p class="quote">I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human haness pcias unde omnis iste natus error sit voluptatem accusantium doloremque la udantium, totam rem aperiam</p>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human haness pcias unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque sa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo emo enim ipsam</p>
+                        <h2>@blogDetail.Blog.MainDescription </h2>
+                        <h6>@blogDetail.Blog.Name  /  @blogDetail.Blog.Time.ToString("dd MMMM , yyyy")  /  <i class="fa fa-comments-o"></i> @blogDetail.Blog.MessageCount</h6>
+                        <p>@blogDetail.Description1</p>
+                        <p>@blogDetail.Description2</p>
+                        <p class="quote">@blogDetail.Description3</p>
+                        <p>@blogDetail.Description4</p>
                     </div>
                     <div class="reply-area">
-                        <h3>LEAVE A REPLY</h3>
-                        <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut<br> the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
+                        <h3>@blogDetail.Title</h3>
+                        <p>@Html.Raw(blogDetail.LastDescription)</p>
                         <form id="contact-form" action="http://demo.devitems.com/eduhome/mail.php" method="post">
                             <div class="row">
                                 <div class="col-md-12">

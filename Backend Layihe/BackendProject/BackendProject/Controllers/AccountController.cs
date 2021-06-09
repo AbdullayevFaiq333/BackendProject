@@ -101,7 +101,7 @@ namespace BackendProject.Controllers
                 return View();
             }
 
-            await _userManager.AddToRoleAsync(newUser, RoleConstants.MemberRole);
+            await _userManager.AddToRoleAsync(newUser, RoleConstants.UserRole);
             await _signInManager.SignInAsync(newUser, true);
 
             return RedirectToAction("Index", "Home");

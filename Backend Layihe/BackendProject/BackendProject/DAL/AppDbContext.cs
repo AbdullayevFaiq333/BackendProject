@@ -25,5 +25,7 @@ namespace BackendProject.DAL
         public DbSet<NoticeBoard> NoticeBoards { get; set; }
         public DbSet<NoticeVideo> NoticeVideo { get; set; }
         public DbSet<Testimonial> Testimonial { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<BlogDetail> BlogDetails { get; set; }
     }
 }
