@@ -16,8 +16,10 @@ namespace BackendProject.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? page = 1)
         {
+            ViewBag.PageCount = Math.Ceiling((decimal)_context.Blogs.Count() / 9);
+            ViewBag.Page = page;
             return View();
         }
 

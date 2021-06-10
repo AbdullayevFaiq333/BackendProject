@@ -17,9 +17,10 @@ namespace BackendProject.ViewComponents
             _context = context;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int count=3)
+        public async Task<IViewComponentResult> InvokeAsync(int count=3,int page=1)
         {
-            var courses = await _context.Courses.Take(count).ToListAsync();
+            
+            var courses = await _context.Courses.OrderByDescending(x=>x.Id).Skip((page-1)*count).Take(count).ToListAsync();
             return View(courses);
         }
     }

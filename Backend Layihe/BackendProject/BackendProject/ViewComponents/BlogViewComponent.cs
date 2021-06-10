@@ -17,9 +17,9 @@ namespace BackendProject.ViewComponents
             _context = context;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int count = 3)
+        public async Task<IViewComponentResult> InvokeAsync(int count = 3, int page = 1)
         {
-            var blogs = await _context.Blogs.Take(count).ToListAsync();
+            var blogs = await _context.Blogs.OrderByDescending(x => x.Id).Skip((page - 1) * count).Take(count).ToListAsync();
             return View(blogs);
         }
     }
