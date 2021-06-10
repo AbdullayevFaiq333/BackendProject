@@ -1,0 +1,39 @@
+﻿@model ChangeRoleViewModel
+@{
+    ViewData["Title"] = "ChangeRole";
+}
+
+<h1>ChangeRole</h1>
+
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Change Role</h4>
+                <form class="forms-sample" method="post">
+                    <div class="form-group">
+                        @foreach (string item in Model.Roles)
+                        {
+                            if (item == Model.Role)
+                            {
+                                <label>@item</label>
+                                <input type="radio" class="form-control" checked name="Role" value="@item">
+                            }
+                            else
+                            {
+                                <label>@item</label>
+                                <input type="radio" class="form-control" name="Role" value="@item">
+                            }
+
+                        }
+
+
+                    </div>
+                    
+                    <button type="submit" class="btn btn-warning mr-2">Change Role</button>
+                    <a asp-action="Index" class="btn btn-secondary">Go back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

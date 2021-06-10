@@ -35,7 +35,29 @@ namespace BackendProject.Controllers
 
             return View(homeViewModel);
         }
+        public IActionResult Search(string search,string path)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                return Content("Error");
+            }
+            if (path == "Course")
+            {
+                var courses = _context.Courses.OrderByDescending(x => x.Id)
+                    .Where(x => x.Name.ToLower().Contains(search.ToLower())).Take(10).ToList();
 
-        
+                return PartialView("_SearchCoursePartial", courses);
+            }
+            else if (path == "Blog")
+            {
+                var blogs = _context.Blogs.OrderByDescending(x => x.Id)
+                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.MainDescription.ToLower().Contains(search.ToLower())).Take(10).ToList();
+
+                return PartialView("_SearchBlogPartial", blogs);
+            }
+            return PartialView("_SearchCoursePartial");
+        }
+
+
     }
 }

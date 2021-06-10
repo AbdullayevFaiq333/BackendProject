@@ -72,24 +72,24 @@
                                     <ul>
                                         <li>
                                             <a asp-controller="Home" asp-action="Index">Home</a>
-                                            
+
                                         </li>
                                         <li><a asp-controller="About" asp-action="Index">About</a></li>
                                         <li>
                                             <a asp-controller="Course" asp-action="Index">courses</a>
-                                            
+
                                         </li>
                                         <li>
                                             <a asp-controller="Event" asp-action="Index">event</a>
-                                            
+
                                         </li>
                                         <li class="hidden-sm">
                                             <a asp-controller="Teacher" asp-action="Index">teacher</a>
-                                            
+
                                         </li>
                                         <li>
                                             <a asp-controller="Blog" asp-action="Index">blog</a>
-                                            
+
                                         </li>
                                         <li><a href="contact.html">Contact</a></li>
                                         <li><a href="#">Buy Now</a>
@@ -105,7 +105,7 @@
                                 </ul>
                                 <div class="search">
                                     <div class="search-form">
-                                        <form id="search-form" action="#">
+                                        <form id="search-form">
                                             <input type="search" placeholder="Search here..." name="search" />
                                             <button type="submit">
                                                 <span><i class="fa fa-search"></i></span>
@@ -205,6 +205,7 @@
     <script src="~/js/jquery.nicescroll.min.js"></script>
     <script src="~/js/plugins.js"></script>
     <script src="~/js/main.js"></script>
+    <script src="~/js/backend.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", false)
 

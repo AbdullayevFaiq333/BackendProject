@@ -1,0 +1,40 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Activate";
+    
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">@Model.Fullname</h4>
+                <p>
+                    @Model.UserName
+                </p>
+                <p>
+                    @Model.Email
+                </p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <a asp-action="Index" class="btn btn-primary">Go Back</a>
+    <form method="post">
+        @if (Model.IsDeleted)
+        {
+            <input asp-for="IsDeleted" type="hidden" value="false" />
+            <button type="submit" class="btn btn-success">Activate</button>
+        }
+        else
+        {
+            <input asp-for="IsDeleted" type="hidden" value="true" />
+            <button type="submit" class="btn btn-danger">DeActivate</button>
+
+        }
+    </form>
+</div>
+
+

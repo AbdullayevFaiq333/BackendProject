@@ -33,5 +33,7 @@ namespace BackendProject.Controllers
                 return NotFound();
             return View(couseDeatil);
         }
+
+        
     }
 }

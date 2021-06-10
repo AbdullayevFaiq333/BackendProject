@@ -321,3 +321,8 @@ C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProje
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\Components\Blog\Default.cshtml.g.cs
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\Components\Banner\Default.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\_SearchCoursePartial.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\_SearchBlogPartial.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\User\Activate.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\User\ChangeRole.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\User\Index.cshtml.g.cs
