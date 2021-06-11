@@ -1,0 +1,107 @@
+﻿@model Course
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create category</h4>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Photo">Photo</label>
+                        <input asp-for="Photo" class="form-control" accept="image/*">
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.AboutCourse">AboutCourse</label>
+                        <input asp-for="CourseDetail.AboutCourse" class="form-control" placeholder="AboutCourse">
+                        <span asp-validation-for="CourseDetail.AboutCourse" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.HowToApply">HowToApply</label>
+                        <input asp-for="CourseDetail.HowToApply" class="form-control" placeholder="HowToApply">
+                        <span asp-validation-for="CourseDetail.HowToApply" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.Certification">Certification</label>
+                        <input asp-for="CourseDetail.Certification" class="form-control" placeholder="Certification">
+                        <span asp-validation-for="CourseDetail.Certification" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.Starts">Starts</label>
+                        <input asp-for="CourseDetail.Starts" class="form-control" placeholder="Starts">
+                        <span asp-validation-for="CourseDetail.Starts" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.Duration">Duration</label>
+                        <input asp-for="CourseDetail.Duration" class="form-control" placeholder="Duration">
+                        <span asp-validation-for="CourseDetail.Duration" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.ClassDuration">ClassDuration</label>
+                        <input asp-for="CourseDetail.ClassDuration" class="form-control" placeholder="ClassDuration">
+                        <span asp-validation-for="CourseDetail.ClassDuration" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.SkillLevel">SkillLevel</label>
+                        <input asp-for="CourseDetail.SkillLevel" class="form-control" placeholder="SkillLevel">
+                        <span asp-validation-for="CourseDetail.SkillLevel" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.Language">Language</label>
+                        <input asp-for="CourseDetail.Language" class="form-control" placeholder="Language">
+                        <span asp-validation-for="CourseDetail.Language" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.Students">Students</label>
+                        <input asp-for="CourseDetail.Students" class="form-control" placeholder="Students">
+                        <span asp-validation-for="CourseDetail.Students" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.Assesments">Assesments</label>
+                        <input asp-for="CourseDetail.Assesments" class="form-control" placeholder="Assesments">
+                        <span asp-validation-for="CourseDetail.Assesments" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.CourseFee">CourseFee</label>
+                        <input asp-for="CourseDetail.CourseFee" class="form-control" placeholder="CourseFee">
+                        <span asp-validation-for="CourseDetail.CourseFee" class="text-danger"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mr-2">Create</button>
+                    <a asp-action="Index" class="btn btn-secondary">Go back</a>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}
+

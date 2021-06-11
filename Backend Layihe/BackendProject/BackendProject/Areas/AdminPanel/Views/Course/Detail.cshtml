@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+    Course course = Model;
+}
+
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <img src="~/img/course/@course.Image" style="width:200px !important ; height:100px !important" />
+                <h4 class="card-title">Name : @course.Name</h4>
+                <p>
+                    Description : @Html.Raw(course.Description)
+                </p>
+                <p>AboutCourse : @course.CourseDetail.AboutCourse</p>
+                <p>HowToApply : @course.CourseDetail.HowToApply</p>
+                <p>Certification : @course.CourseDetail.Certification</p>
+                <p>Starts : @course.CourseDetail.Starts</p>
+                <p>Duration : @course.CourseDetail.Duration</p>
+                <p>ClassDuration : @course.CourseDetail.ClassDuration</p>
+                <p>SkillLevel : @course.CourseDetail.SkillLevel</p>
+                <p>Language : @course.CourseDetail.Language</p>
+                <p>Students : @course.CourseDetail.Students</p>
+                <p>Assesments : @course.CourseDetail.Assesments</p>
+                <p>CourseFee : @course.CourseDetail.CourseFee</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <a asp-action="Index" class="btn btn-primary">Go Back</a>
+</div>
+
+

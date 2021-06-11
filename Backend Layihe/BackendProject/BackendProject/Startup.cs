@@ -1,3 +1,4 @@
+using BackendProject.Areas.AdminPanel.Utils;
 using BackendProject.DAL;
 using BackendProject.Models;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,12 +19,14 @@ namespace BackendProject
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            _environment = environment;
         }
 
         public IConfiguration Configuration { get; }
+        private readonly IWebHostEnvironment _environment;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -50,6 +54,8 @@ namespace BackendProject
             });
 
             services.AddControllersWithViews();
+
+            Constants.ImageFolderPath = Path.Combine(_environment.WebRootPath, "img");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
