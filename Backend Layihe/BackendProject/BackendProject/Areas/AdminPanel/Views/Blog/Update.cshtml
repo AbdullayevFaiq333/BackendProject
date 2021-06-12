@@ -1,0 +1,95 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create blog</h4>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Photo">Photo</label>
+                        <input asp-for="Photo" class="form-control" accept="image/*">
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Time">Time</label>
+                        <input asp-for="Time" class="form-control" placeholder="Time">
+                        <span asp-validation-for="Time" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MessageCount">MessageCount</label>
+                        <input asp-for="MessageCount" class="form-control" placeholder="MessageCount">
+                        <span asp-validation-for="MessageCount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MainDescription">MainDescription</label>
+                        <textarea asp-for="MainDescription" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="MainDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="BlogDetail.Description1">Description1</label>
+                        <input asp-for="BlogDetail.Description1" class="form-control" placeholder="Description1">
+                        <span asp-validation-for="BlogDetail.Description1" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BlogDetail.Description2">Description2</label>
+                        <input asp-for="BlogDetail.Description2" class="form-control" placeholder="Description2">
+                        <span asp-validation-for="BlogDetail.Description2" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BlogDetail.Description3">Description3</label>
+                        <input asp-for="BlogDetail.Description3" class="form-control" placeholder="Description3">
+                        <span asp-validation-for="BlogDetail.Description3" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BlogDetail.Description4">Description4</label>
+                        <input asp-for="BlogDetail.Description4" class="form-control" placeholder="Description4">
+                        <span asp-validation-for="BlogDetail.Description4" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BlogDetail.Title">Title</label>
+                        <input asp-for="BlogDetail.Title" class="form-control" placeholder="Title">
+                        <span asp-validation-for="BlogDetail.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BlogDetail.LastDescription">LastDescription</label>
+                        <input asp-for="BlogDetail.LastDescription" class="form-control" placeholder="LastDescription">
+                        <span asp-validation-for="BlogDetail.LastDescription" class="text-danger"></span>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                    <a asp-action="Index" class="btn btn-secondary">Go back</a>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#MainDescription'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}
+
+
+

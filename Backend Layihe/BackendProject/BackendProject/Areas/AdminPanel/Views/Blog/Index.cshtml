@@ -31,7 +31,7 @@
                                     @blog.Name
                                 </td>
                                 <td>
-                                    @blog.MainDescription
+                                    @Html.Raw(blog.MainDescription)
                                 </td>
                                 <td>
                                     <a asp-action="Detail" asp-route-id="@blog.Id" class="btn btn-success">Detail</a>

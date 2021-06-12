@@ -31,7 +31,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             if (id == null)
                 return NotFound();
 
-            var course = _context.Courses.Include(x=>x.CourseDetail).FirstOrDefault(x=>x.Id==id);
+            var course = _context.Courses.Where(x => x.IsDeleted == false).Include(x=>x.CourseDetail).FirstOrDefault(x=>x.Id==id);
 
             if (course == null)
                 return NotFound();

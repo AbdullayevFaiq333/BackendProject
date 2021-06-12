@@ -20,7 +20,7 @@ namespace BackendProject.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(int count=3,int page=1)
         {
             
-            var courses = await _context.Courses.OrderByDescending(x=>x.Id).Skip((page-1)*count).Take(count).ToListAsync();
+            var courses = await _context.Courses.Where(x=>x.IsDeleted==false).OrderByDescending(x=>x.Id).Skip((page-1)*count).Take(count).ToListAsync();
             return View(courses);
         }
     }

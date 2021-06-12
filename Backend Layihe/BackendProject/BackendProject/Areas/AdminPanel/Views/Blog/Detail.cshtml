@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+    Blog blog = Model;
+}
+
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <img src="~/img/blog/@blog.Image" style="width:200px !important ; height:100px !important" />
+                <h4 class="card-title">Name : @blog.Name</h4>
+                <p>Time : @blog.Time</p>
+                <p>MessageCount : @blog.MessageCount</p>
+                <p>
+                    MainDescription : @Html.Raw(blog.MainDescription)
+                </p>
+                <p>Description1 : @blog.BlogDetail.Description1</p>
+                <p>Description2 : @blog.BlogDetail.Description2</p>
+                <p>Description3 : @blog.BlogDetail.Description3</p>
+                <p>Description4 : @blog.BlogDetail.Description4</p>
+                <p>Title : @blog.BlogDetail.Title</p>
+                <p>LastDescription : @blog.BlogDetail.LastDescription</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <a asp-action="Index" class="btn btn-primary">Go Back</a>
+</div>
+

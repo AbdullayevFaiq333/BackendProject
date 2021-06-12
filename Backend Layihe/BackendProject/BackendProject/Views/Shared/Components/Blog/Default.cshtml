@@ -17,7 +17,7 @@
                     <p>@blog.Name  /  @blog.Time.ToString("dd MMMM , yyyy")  /  <i class="fa fa-comments-o"></i> @blog.MessageCount</p>
                 </div>
                 <div class="blog-bottom">
-                    <h2><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">@blog.MainDescription </a></h2>
+                    <h2><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">@Html.Raw(blog.MainDescription) </a></h2>
                     <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">read more</a>
                 </div>
             </div>
