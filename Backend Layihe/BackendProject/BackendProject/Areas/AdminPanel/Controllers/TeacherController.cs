@@ -180,7 +180,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             dbTeacher.TeacherDetail.Design = teacher.TeacherDetail.Design;
             dbTeacher.TeacherDetail.Innovation = teacher.TeacherDetail.Innovation;
             dbTeacher.TeacherDetail.Communication = teacher.TeacherDetail.Communication;
-
+            dbTeacher.PositionId = (int)PositionId;
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
