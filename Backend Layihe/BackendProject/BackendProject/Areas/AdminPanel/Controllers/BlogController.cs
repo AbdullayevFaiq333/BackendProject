@@ -69,8 +69,8 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             {
                 return View();
             }
-            var courseImg = Path.Combine(Constants.ImageFolderPath, "blog");
-            var fileName = await FileUtil.GenerateFileAsync(courseImg, blog.Photo);
+            var blogImg = Path.Combine(Constants.ImageFolderPath, "blog");
+            var fileName = await FileUtil.GenerateFileAsync(blogImg, blog.Photo);
             blog.Image = fileName;
 
             var isExist = await _context.Courses.AnyAsync(x => x.IsDeleted == false && x.Name.ToLower() == blog.Name.ToLower());

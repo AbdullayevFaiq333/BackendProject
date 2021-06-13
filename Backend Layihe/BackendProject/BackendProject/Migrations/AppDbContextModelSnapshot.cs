@@ -92,6 +92,51 @@ namespace BackendProject.Migrations
                     b.ToTable("Banners");
                 });
 
+            modelBuilder.Entity("BackendProject.Models.Bio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Facebook")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FooterLogo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HaveAnyQuestion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HeaderLogo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Pinterest")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sayt")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Twitter")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Vimeo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bio");
+                });
+
             modelBuilder.Entity("BackendProject.Models.Blog", b =>
                 {
                     b.Property<int>("Id")
@@ -305,6 +350,9 @@ namespace BackendProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -369,6 +417,9 @@ namespace BackendProject.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -418,6 +469,9 @@ namespace BackendProject.Migrations
 
                     b.Property<int>("Innovation")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Language")
                         .HasColumnType("int");

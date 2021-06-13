@@ -32,5 +32,6 @@ namespace BackendProject.DAL
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Banner> Banners { get; set; }
+        public DbSet<Bio> Bio { get; set; }
     }
 }

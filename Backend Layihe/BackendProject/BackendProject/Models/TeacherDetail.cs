@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace BackendProject.Models
         public string Experience { get; set; }
         public string Hobbies { get; set; }
         public string Faculty { get; set; }
+        [Required, EmailAddress, DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Skype { get; set; }
@@ -23,6 +25,7 @@ namespace BackendProject.Models
         public int Design { get; set; }
         public int Innovation { get; set; }
         public int Communication { get; set; }
+        public bool IsDeleted { get; set; }
 
         [ForeignKey("Teacher")]
         public int TeacherId { get; set; }

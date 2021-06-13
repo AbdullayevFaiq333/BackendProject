@@ -336,3 +336,10 @@ C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProje
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Blog\Create.cshtml.g.cs
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Blog\Update.cshtml.g.cs
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Blog\Delete.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Index.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Create.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Update.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Detail.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Delete.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\Components\Header\Default.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\Components\Footer\Default.cshtml.g.cs
