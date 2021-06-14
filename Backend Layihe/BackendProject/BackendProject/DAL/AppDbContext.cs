@@ -34,5 +34,10 @@ namespace BackendProject.DAL
         public DbSet<Banner> Banners { get; set; }
         public DbSet<Bio> Bio { get; set; }
         public DbSet<AllSocialMedia> AllSocialMedias { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<EventDetail> EventDetail { get; set; }
+        public DbSet<Speaker> Speakers { get; set; }
+        public DbSet<EventDetailSpeaker> EventDetailSpeakers { get; set; }
+        public DbSet<Subcribe> Subcribes { get; set; }
     }
 }

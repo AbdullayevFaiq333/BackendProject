@@ -2,11 +2,13 @@
 using BackendProject.Models;
 using BackendProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BackendProject.Controllers
@@ -58,6 +60,30 @@ namespace BackendProject.Controllers
             return PartialView("_SearchCoursePartial");
         }
 
+        public async Task<IActionResult> Subscribe(string email)
+        {
+            if (email == null)
+            {
+                return Content("Email cannot be null");
+            }
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(email);
+            if (!match.Success)
+            {
+                return Content("Write right Email");
+            }
+            var isExist = await _context.Subcribes.AnyAsync(x => x.Email == email);
+            if (isExist)
+            {
+                return Content("You have already subscribed");
+            }
 
+            Subcribe subcribe = new Subcribe { Email = email };
+            await _context.Subcribes.AddAsync(subcribe);
+            await _context.SaveChangesAsync();
+            return Content("Successfully completed");
+
+
+        }
     }
 }
