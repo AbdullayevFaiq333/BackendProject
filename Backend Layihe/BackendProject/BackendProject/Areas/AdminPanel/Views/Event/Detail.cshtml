@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+    Event eventt = Model;
+}
+
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <img src="~/img/event/@eventt.Image" style="width:200px !important ; height:100px !important" />
+                <h4 class="card-title">Title : @eventt.Title</h4>
+                <p>ImageTime : @eventt.ImageTime</p>
+                <p>TimeStart : @eventt.TimeStart</p>
+                <p>TimeEnd : @eventt.TimeEnd</p>
+                <p>Venue : @eventt.Venue</p>
+                <p>Description : @Html.Raw(eventt.EventDetail.Description)</p>
+                <p>LeaveAReply : @eventt.EventDetail.LeaveAReply</p>
+                @foreach (EventDetailSpeaker eventDetailSpeaker in eventt.EventDetail.EventDetailSpeakers)
+                {
+                    <img src="~/img/event/@eventDetailSpeaker.Speaker.Image" style="width:200px !important ; height:100px !important" />
+                    <p>Spekar Name : @eventDetailSpeaker.Speaker.FullName</p>
+                    <p>Spekar Name : @eventDetailSpeaker.Speaker.Position</p>
+                    
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <a asp-action="Index" class="btn btn-primary">Go Back</a>
+</div>
+
+
+
