@@ -143,8 +143,8 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                     System.IO.File.Delete(path);
                 }
 
-                var courseImg = Path.Combine(Constants.ImageFolderPath, "teacher");
-                var fileName = await FileUtil.GenerateFileAsync(courseImg, teacher.Photo);
+                var teacherImg = Path.Combine(Constants.ImageFolderPath, "teacher");
+                var fileName = await FileUtil.GenerateFileAsync(teacherImg, teacher.Photo);
 
                 if (teacher.Photo == null)
                 {
@@ -219,6 +219,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                 return NotFound();
 
             teacher.IsDeleted = true;
+            teacher.TeacherDetail.IsDeleted = true;
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");

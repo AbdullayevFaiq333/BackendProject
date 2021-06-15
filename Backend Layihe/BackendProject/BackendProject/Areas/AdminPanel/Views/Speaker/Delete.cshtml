@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Delete";
+    Speaker speaker = Model;
+}
+
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <img src="~/img/event/@speaker.Image" style="width:200px !important ; height:100px !important" />
+                <h4 class="card-title">Name : @speaker.FullName</h4>
+
+                <p>Position : @speaker.Position</p>
+                @foreach (EventDetailSpeaker eventDetailSpeaker in speaker.EventDetailSpeakers)
+                {
+                    <p>
+                        @eventDetailSpeaker.EventDetail.Event.Title
+                    </p>
+                }
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <a asp-action="Index" class="btn btn-primary">Go Back</a>
+    <form method="post">
+        <button type="submit" class="btn btn-danger mr-2">Delete</button>
+    </form>
+</div>
+
+
+

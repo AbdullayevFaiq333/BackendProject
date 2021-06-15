@@ -34,12 +34,18 @@
                                 <td>
                                     @speaker.Position
                                 </td>
-                                @foreach (EventDetailSpeaker eventDetailSpeaker in speaker.EventDetailSpeakers)
-                                {
-                                    <td>
-                                        @eventDetailSpeaker.EventDetail.Event.Title
-                                    </td>
-                                }
+                                <td>
+                                    @foreach (EventDetailSpeaker eventDetailSpeaker in speaker.EventDetailSpeakers)
+                                    {
+                                        <ul>
+                                            <li>
+                                                @eventDetailSpeaker.EventDetail.Event.Title
+                                            </li>
+                                        </ul>
+                                        
+                                    }
+                                </td>
+                               
 
                                 <td>
                                     <a asp-action="Update" asp-route-id="@speaker.Id" class="btn btn-warning">Update</a>

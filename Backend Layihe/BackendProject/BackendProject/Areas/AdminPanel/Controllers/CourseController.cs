@@ -115,6 +115,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                 return NotFound();
 
             course.IsDeleted = true;
+            course.CourseDetail.IsDeleted = true;
             await _context.SaveChangesAsync();
             
             return RedirectToAction("Index");

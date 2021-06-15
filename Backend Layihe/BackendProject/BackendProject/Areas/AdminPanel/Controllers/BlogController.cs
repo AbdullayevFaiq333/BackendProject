@@ -221,6 +221,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                 return NotFound();
 
             blog.IsDeleted = true;
+            blog.BlogDetail.IsDeleted = true;
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");

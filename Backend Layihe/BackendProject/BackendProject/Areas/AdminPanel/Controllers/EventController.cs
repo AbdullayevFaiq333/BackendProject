@@ -1,6 +1,7 @@
 ﻿using BackendProject.Areas.AdminPanel.Utils;
 using BackendProject.DAL;
 using BackendProject.Models;
+using BackendProject.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -27,20 +28,13 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             return View(events);
         }
 
-
-        public IActionResult Create()
-        {
-            
-            return View();
-        }
-
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null)
                 return NotFound();
 
             var eventt = await _context.Events.Where(x => x.IsDelete == false).Include(x => x.EventDetail)
-                                                .ThenInclude(x=> x.EventDetailSpeakers).ThenInclude(x => x.Speaker)
+                                                .ThenInclude(x => x.EventDetailSpeakers).ThenInclude(x => x.Speaker)
                                                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (eventt == null)
@@ -48,6 +42,14 @@ namespace BackendProject.Areas.AdminPanel.Controllers
 
             return View(eventt);
         }
+
+        public IActionResult Create()
+        {
+            
+            return View();
+        }
+
+        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -83,6 +85,15 @@ namespace BackendProject.Areas.AdminPanel.Controllers
 
             await _context.AddRangeAsync(eventt, eventt.EventDetail);
             await _context.SaveChangesAsync();
+
+            List<Subcribe> subcribes = _context.Subcribes.ToList();
+            string subject = "Create event";
+            string url = "https://localhost:44302/Event/Detail/" + eventt.Id;
+            string message = $"<a href={url}>yeni event yarandi baxmaq ucun click edin</a>";
+            foreach (Subcribe sub in subcribes)
+            {
+                await Helper.SendMessage(subject, message, sub.Email);
+            }
 
             return RedirectToAction("Index");
         }
@@ -207,6 +218,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
 
 
             eventt.IsDelete = true;
+            eventt.EventDetail.IsDelete = true;
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
