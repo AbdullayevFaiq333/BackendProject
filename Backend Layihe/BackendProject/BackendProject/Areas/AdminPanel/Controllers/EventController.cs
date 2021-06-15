@@ -140,16 +140,16 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             if (dbEventt == null)
                 return NotFound();
 
-            if (eventt.Image != null)
+            if (eventt.Photo != null)
             {
-                var path = Path.Combine(Constants.ImageFolderPath, "teacher", dbEventt.Image);
+                var path = Path.Combine(Constants.ImageFolderPath, "event", dbEventt.Image);
                 if (System.IO.File.Exists(path))
                 {
                     System.IO.File.Delete(path);
                 }
 
-                var courseImg = Path.Combine(Constants.ImageFolderPath, "teacher");
-                var fileName = await FileUtil.GenerateFileAsync(courseImg, eventt.Photo);
+                var eventImg = Path.Combine(Constants.ImageFolderPath, "event");
+                var fileName = await FileUtil.GenerateFileAsync(eventImg, eventt.Photo);
 
                 if (eventt.Photo == null)
                 {
@@ -168,9 +168,8 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                     ModelState.AddModelError("Photo", "Max size is 2 MB.");
                     return View();
                 }
-                eventt.Image = fileName;
+                dbEventt.Image = fileName;
             }
-
             dbEventt.ImageTime = eventt.ImageTime;
             dbEventt.TimeStart = eventt.TimeStart;
             dbEventt.TimeEnd = eventt.TimeEnd;

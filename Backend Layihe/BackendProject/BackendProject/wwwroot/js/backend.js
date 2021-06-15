@@ -55,3 +55,33 @@ $(document).on("click", "#button-subscribe", function () {
     }
 
 })
+
+
+$(document).ready(function () {
+
+    //Global Search
+    
+    let search;
+    $(document).on("keyup", `#input-search-home`, function () {
+        search = $(this).val().trim();
+
+
+        $(`#home-search #global-search`).remove();
+
+        if (se.length>0) {
+            $.ajax({
+                url: '/Home/Search/',
+                type: "GET",
+                data: {
+                    "search": search,
+                    
+                },
+                success: function (res) {
+                    $(`#home-search`).append(res)
+                }
+            });
+        }
+        
+    });    
+    
+})

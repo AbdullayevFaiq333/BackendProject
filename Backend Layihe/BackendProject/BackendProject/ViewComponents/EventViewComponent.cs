@@ -18,22 +18,15 @@ namespace BackendProject.ViewComponents
             _context = context;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int? take, int skip)
+        public async Task<IViewComponentResult> InvokeAsync(int count = 3, int page = 1)
         {
-
-            if (take == null)
-            {
-                List<Event> events = await _context.Events.Where(x => x.IsDelete == false).Include(y => y.EventDetail)
-                                                                 .ThenInclude(z => z.EventDetailSpeakers).ThenInclude(z => z.Speaker).ToListAsync();
-                return View(events);
-            }
-            else
-            {
-                List<Event> events = await _context.Events.Where(x => x.IsDelete == false).Include(y => y.EventDetail)
-                                                        .ThenInclude(z => z.EventDetailSpeakers).ThenInclude(z => z.Speaker).Take(6).ToListAsync();
-                return View(events);
-            }
-
+            
+            var events = await _context.Events.Where(x => x.IsDelete == false).OrderByDescending(x => x.Id)
+                                              .Skip((page - 1) * count).Take(count).Include(y => y.EventDetail)
+                                              .ThenInclude(z => z.EventDetailSpeakers).ThenInclude(z => z.Speaker)
+                                              .ToListAsync();
+            return View(events);
+            
         }
     }
 }

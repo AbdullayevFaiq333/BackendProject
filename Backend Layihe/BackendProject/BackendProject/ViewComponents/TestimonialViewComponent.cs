@@ -19,7 +19,7 @@ namespace BackendProject.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var testimonial = await _context.Testimonial.FirstOrDefaultAsync();
+            var testimonial = await _context.Testimonial.ToListAsync();
 
             return View(testimonial);
         }

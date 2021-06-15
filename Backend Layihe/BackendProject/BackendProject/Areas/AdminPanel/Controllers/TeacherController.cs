@@ -135,7 +135,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             if (dbTeacher == null)
                 return NotFound();
 
-            if (teacher.Image != null)
+            if (teacher.Photo != null)
             {
                 var path = Path.Combine(Constants.ImageFolderPath, "teacher", dbTeacher.Image);
                 if (System.IO.File.Exists(path))
@@ -163,9 +163,9 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                     ModelState.AddModelError("Photo", "Max size is 2 MB.");
                     return View();
                 }
-                teacher.Image = fileName;
+                dbTeacher.Image = fileName;
             }
-
+            
             dbTeacher.Name = teacher.Name;
             dbTeacher.TeacherDetail.AboutMe = teacher.TeacherDetail.AboutMe;
             dbTeacher.TeacherDetail.Degree = teacher.TeacherDetail.Degree;

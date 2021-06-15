@@ -46,16 +46,30 @@ namespace BackendProject.Controllers
             if (path == "Course")
             {
                 var courses = _context.Courses.OrderByDescending(x => x.Id)
-                    .Where(x => x.Name.ToLower().Contains(search.ToLower())).Take(10).ToList();
+                    .Where(x=>x.IsDeleted==false && x.Name.ToLower().Contains(search.ToLower())).Take(10).ToList();
 
                 return PartialView("_SearchCoursePartial", courses);
             }
             else if (path == "Blog")
             {
                 var blogs = _context.Blogs.OrderByDescending(x => x.Id)
-                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.MainDescription.ToLower().Contains(search.ToLower())).Take(10).ToList();
+                    .Where(x => x.IsDeleted == false && x.Name.ToLower().Contains(search.ToLower()) || x.MainDescription.ToLower().Contains(search.ToLower())).Take(10).ToList();
 
                 return PartialView("_SearchBlogPartial", blogs);
+            }
+            else if (path == "Event")
+            {
+                var events = _context.Events.OrderByDescending(x => x.Id)
+                    .Where(x => x.IsDelete == false && x.Title.ToLower().Contains(search.ToLower())).Take(10).ToList();
+
+                return PartialView("_SearchEventPartial", events);
+            }
+            else if (path == "Teacher")
+            {
+                var teachers = _context.Teachers.OrderByDescending(x => x.Id)
+                    .Where(x => x.IsDeleted == false && x.Name.ToLower().Contains(search.ToLower())).Take(10).ToList();
+
+                return PartialView("_SearchTeacherPartial", teachers);
             }
             return PartialView("_SearchCoursePartial");
         }

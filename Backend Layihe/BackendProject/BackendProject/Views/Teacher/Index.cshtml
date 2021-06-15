@@ -7,6 +7,53 @@
 @await Component.InvokeAsync("Banner", "our teachers")
 <!-- Banner Area End -->
 <!-- Teacher Start -->
-@await Component.InvokeAsync("Teacher")
+<div class="teacher-area pt-150 pb-105">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="course-title">
+                    <h3>search teachers</h3>
+                </div>
+                <div class="course-form">
+                    <form id="search">
+                        <ul class="list-unstyled py-3" id="searchResult">
+                            <li class="d-flex px-3">
+                                <input id="input-search-Teacher" type="search" placeholder="Search..." name="search" />
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="old-Teacher">
+            @await Component.InvokeAsync("Teacher", new { count = 6, page = ViewBag.Page })
+        </div>
+        <div class="row" id="new-Teacher">
+
+        </div>
+        <div class="row" id="pagination-Teacher">
+            <div class="col-xs-12">
+                <div class="pagination">
+                    <ul>
+                        @for (int i = 1; i <= ViewBag.PageCount; i++)
+                        {
+                            @if (ViewBag.Page == i)
+                            {
+                                <li class="disabled"><a asp-controller="Teacher" asp-action="Index" asp-route-page="@i">@i</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-controller="Teacher" asp-action="Index" asp-route-page="@i">@i</a></li>
+                            }
+
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
 <!-- Teacher End -->
 

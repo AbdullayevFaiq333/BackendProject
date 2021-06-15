@@ -174,7 +174,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             
             
             
-            if (course.Image != null)
+            if (course.Photo != null)
             {
                 var path = Path.Combine(Constants.ImageFolderPath, "course", dbCourse.Image);
                 if (System.IO.File.Exists(path))
@@ -202,10 +202,10 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                     ModelState.AddModelError("Photo", "Max size is 2 MB.");
                     return View();
                 }
-                course.Image = fileName;
+                dbCourse.Image = fileName;
             }
-            
 
+            
             dbCourse.Name = course.Name;
             dbCourse.Description = course.Description;
             dbCourse.CourseDetail.AboutCourse = course.CourseDetail.AboutCourse;

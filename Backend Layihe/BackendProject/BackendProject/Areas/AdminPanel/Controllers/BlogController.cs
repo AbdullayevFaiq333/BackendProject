@@ -140,7 +140,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
 
 
 
-            if (blog.Image != null)
+            if (blog.Photo != null)
             {
                 var path = Path.Combine(Constants.ImageFolderPath, "blog", dbBlog.Image);
                 if (System.IO.File.Exists(path))
@@ -168,10 +168,10 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                     ModelState.AddModelError("Photo", "Max size is 2 MB.");
                     return View();
                 }
-                blog.Image = fileName;
+                dbBlog.Image = fileName;
             }
 
-
+            
             dbBlog.Name = blog.Name;
             dbBlog.Time = blog.Time;
             dbBlog.MessageCount = blog.MessageCount;

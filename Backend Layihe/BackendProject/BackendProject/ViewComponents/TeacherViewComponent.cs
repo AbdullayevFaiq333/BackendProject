@@ -11,27 +11,21 @@ namespace BackendProject.ViewComponents
 {
     public class TeacherViewComponent : ViewComponent
     {
-        private readonly AppDbContext _dbContext;
+        private readonly AppDbContext _context;
 
-        public TeacherViewComponent(AppDbContext dbContext)
+        public TeacherViewComponent(AppDbContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
-        public async Task<IViewComponentResult> InvokeAsync(int? take, int skip)
+        public async Task<IViewComponentResult> InvokeAsync(int count = 4, int page = 1)
         {
+            var teachers = await _context.Teachers.Where(x => x.IsDeleted == false).OrderByDescending(x => x.Id)
+                                              .Skip((page - 1) * count).Take(count).Include(y => y.TeacherDetail)
+                                              .Include(z => z.SocialMedias).Include(z => z.Position)
+                                              .ToListAsync();
+            return View(teachers);
 
-            if (take == null)
-            {
-                List<Teacher> teachers = await _dbContext.Teachers.Where(x => x.IsDeleted == false).Include(y => y.SocialMedias)
-                                                                       .Include(z => z.Position).ToListAsync();
-                return View(teachers);
-            }
-            else
-            {
-                List<Teacher> teachers = await _dbContext.Teachers.Where(x => x.IsDeleted == false).Include(y => y.SocialMedias)
-                                                        .Include(z => z.Position).Skip((skip - 1) * 6).Take((int)take).ToListAsync();
-                return View(teachers);
-            }
+           
 
         }
     }

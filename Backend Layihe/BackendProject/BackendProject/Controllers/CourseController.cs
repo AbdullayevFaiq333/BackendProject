@@ -21,14 +21,16 @@ namespace BackendProject.Controllers
         {
             ViewBag.PageCount = Math.Ceiling((decimal)_context.Courses.Count() / 6);
             ViewBag.Page = page;
-            return View();
+            var courses = _context.Courses.Where(c => c.IsDeleted == false).ToList();
+            
+            return View(courses);
         }
 
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null)
                 return NotFound();
-            var couseDeatil = await _context.CourseDetails.Include(x => x.Course).FirstOrDefaultAsync(x => x.CourseId == id);
+            var couseDeatil = await _context.CourseDetails.Where(c => c.IsDeleted == false).Include(x => x.Course).FirstOrDefaultAsync(x => x.CourseId == id);
             if (couseDeatil == null)
                 return NotFound();
             return View(couseDeatil);

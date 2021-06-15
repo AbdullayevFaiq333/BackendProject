@@ -20,7 +20,8 @@ namespace BackendProject.Controllers
         {
             ViewBag.PageCount = Math.Ceiling((decimal)_context.Blogs.Count() / 9);
             ViewBag.Page = page;
-            return View();
+            var blogs = _context.Blogs.Where(c => c.IsDeleted == false).ToList();
+            return View(blogs);
         }
 
         public async Task<IActionResult> Detail(int? id)
@@ -28,7 +29,7 @@ namespace BackendProject.Controllers
 
             if (id == null)
                 return NotFound();
-            var blogDeatil = await _context.BlogDetails.Include(x => x.Blog).FirstOrDefaultAsync(x => x.BlogId == id);
+            var blogDeatil = await _context.BlogDetails.Where(c => c.IsDeleted == false).Include(x => x.Blog).FirstOrDefaultAsync(x => x.BlogId == id);
             if (blogDeatil == null)
                 return NotFound();
             
