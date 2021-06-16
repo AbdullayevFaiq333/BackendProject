@@ -1,4 +1,6 @@
 ﻿using BackendProject.DAL;
+using BackendProject.Models;
+using BackendProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,23 +19,48 @@ namespace BackendProject.Controllers
             _context = context;
         }
 
-        public IActionResult Index(int? page=1)
+        public IActionResult Index(int? categoryId,int? page=1)
         {
-            ViewBag.PageCount = Math.Ceiling((decimal)_context.Courses.Count() / 6);
-            ViewBag.Page = page;
-            var courses = _context.Courses.Where(c => c.IsDeleted == false).ToList();
-            
-            return View(courses);
+            var courses = new List<Course>();
+
+            if (categoryId == null)
+            {
+                ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Courses.Where(x => x.IsDeleted == false).Count() / 9);
+                ViewBag.Page = page;
+
+                if (ViewBag.PageCount < page || page <= 0)
+                    return NotFound();
+
+                return View(courses);
+            }
+            else
+            {
+                var categoryCourses = _context.CourseCategories.Where(x => x.CategoryId == categoryId)
+                    .Include(x => x.Course).Where(x => x.Course.IsDeleted == false).OrderByDescending(x => x.Course.Id);
+                foreach (var categoryCourse in categoryCourses)
+                {
+                    courses.Add(categoryCourse.Course);
+                }
+                return View(courses);
+            }
         }
 
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null)
                 return NotFound();
-            var couseDeatil = await _context.CourseDetails.Where(c => c.IsDeleted == false).Include(x => x.Course).FirstOrDefaultAsync(x => x.CourseId == id);
-            if (couseDeatil == null)
+
+            var course = await _context.Courses.Where(x => x.IsDeleted == false)
+                .Include(x => x.CourseDetail).FirstOrDefaultAsync(x => x.Id == id);
+            if (course == null)
                 return NotFound();
-            return View(couseDeatil);
+            var courseViewModel = new CourseViewModel
+            {
+                Categories = await _context.Categories.Include(x => x.CourseCategories.Where(y => y.Course.IsDeleted == false)).ThenInclude(x => x.Course).Where(x => x.IsDeleted == false).ToListAsync(),
+                Course = course
+            };
+
+            return View(courseViewModel);
         }
 
         

@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Detail";
-    BlogDetail blogDetail = Model;
+    BlogViewModel blogViewModel = Model;
 }
 
 <!-- Banner Area Start -->
@@ -14,19 +14,19 @@
             <div class="col-md-8">
                 <div class="blog-details">
                     <div class="blog-details-img">
-                        <img src="~/img/blog/@blogDetail.Blog.Image" alt="blog-details">
+                        <img src="~/img/blog/@blogViewModel.Blog.Image" alt="blog-details">
                     </div>
                     <div class="blog-details-content">
-                        <h2>@blogDetail.Blog.MainDescription </h2>
-                        <h6>@blogDetail.Blog.Name  /  @blogDetail.Blog.Time.ToString("dd MMMM , yyyy")  /  <i class="fa fa-comments-o"></i> @blogDetail.Blog.MessageCount</h6>
-                        <p>@blogDetail.Description1</p>
-                        <p>@blogDetail.Description2</p>
-                        <p class="quote">@blogDetail.Description3</p>
-                        <p>@blogDetail.Description4</p>
+                        <h2>@blogViewModel.Blog.MainDescription </h2>
+                        <h6>@blogViewModel.Blog.Name  /  @blogViewModel.Blog.Time.ToString("dd MMMM , yyyy")  /  <i class="fa fa-comments-o"></i> @blogViewModel.Blog.MessageCount</h6>
+                        <p>@blogViewModel.Blog.BlogDetail.Description1</p>
+                        <p>@blogViewModel.Blog.BlogDetail.Description2</p>
+                        <p class="quote">@blogViewModel.Blog.BlogDetail.Description3</p>
+                        <p>@blogViewModel.Blog.BlogDetail.Description4</p>
                     </div>
                     <div class="reply-area">
-                        <h3>@blogDetail.Title</h3>
-                        <p>@Html.Raw(blogDetail.LastDescription)</p>
+                        <h3>@blogViewModel.Blog.BlogDetail.Title</h3>
+                        <p>@Html.Raw(blogViewModel.Blog.BlogDetail.LastDescription)</p>
                         <form id="contact-form" action="http://demo.devitems.com/eduhome/mail.php" method="post">
                             <div class="row">
                                 <div class="col-md-12">
@@ -66,12 +66,10 @@
                     <div class="single-blog-widget mb-47">
                         <h3>categories</h3>
                         <ul>
-                            <li><a href="#">CSS Engineering (10)</a></li>
-                            <li><a href="#">Political Science (12)</a></li>
-                            <li><a href="#">Micro Biology (08)</a></li>
-                            <li><a href="#">HTML5 &amp; CSS3 (15)</a></li>
-                            <li><a href="#">Web Design (20)</a></li>
-                            <li><a href="#">PHP (23)</a></li>
+                            @foreach (var category in blogViewModel.Categories)
+                            {
+                                <li><a asp-action="Index" asp-route-categoryId="@category.Id">@category.Title (@category.BlogCategories.Count)</a></li>
+                            }
                         </ul>
                     </div>
                     <div class="single-blog-widget mb-47">

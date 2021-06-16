@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 namespace BackendProject.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
+    //[Authorize(Roles = RoleConstants.AdminRole)]
     public class CourseController : Controller
     {
         private readonly AppDbContext _context;
@@ -41,13 +42,19 @@ namespace BackendProject.Areas.AdminPanel.Controllers
 
         public IActionResult Create()
         {
+            var categories =  _context.Categories.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Categories = categories;
+
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Course course)
+        public async Task<IActionResult> Create(Course course, int[] categoryId)
         {
+            var categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Categories = categories;
+
             if (course.Photo == null)
             {
                 ModelState.AddModelError("Photo", "Photo cannot be empty");
@@ -79,6 +86,24 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                 ModelState.AddModelError("Name", "This name is available");
                 return View();
             }
+
+            if (categoryId.Length == 0)
+            {
+                ModelState.AddModelError("", "Please select category.");
+                return View(course);
+            }
+
+            var CourseCategoryList = new List<CourseCategory>();
+            foreach (var item in categoryId)
+            {
+                var CourseCategory = new CourseCategory
+                {
+                    CategoryId = item,
+                    CourseId = course.Id
+                };
+                CourseCategoryList.Add(CourseCategory);
+            }
+            course.CourseCategories = CourseCategoryList;
 
             await _context.AddRangeAsync(course, course.CourseDetail);
             await _context.SaveChangesAsync();

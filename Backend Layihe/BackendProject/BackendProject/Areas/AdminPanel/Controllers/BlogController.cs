@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 namespace BackendProject.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
+    //[Authorize(Roles = RoleConstants.AdminRole)]
     public class BlogController : Controller
     {
         private readonly AppDbContext _context;
@@ -42,13 +43,18 @@ namespace BackendProject.Areas.AdminPanel.Controllers
 
         public IActionResult Create()
         {
+            var categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Categories = categories;
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Blog blog)
+        public async Task<IActionResult> Create(Blog blog, int[] categoryId)
         {
+            var categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Categories = categories;
+
             if (blog.Photo == null)
             {
                 ModelState.AddModelError("Photo", "Photo cannot be empty");
@@ -69,6 +75,25 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             {
                 return View();
             }
+
+            if (categoryId.Length == 0)
+            {
+                ModelState.AddModelError("", "Please select category.");
+                return View(blog);
+            }
+
+            var blogCategoryList = new List<BlogCategory>();
+            foreach (var item in categoryId)
+            {
+                var blogCategory = new BlogCategory
+                {
+                    CategoryId = item,
+                    BlogId = blog.Id
+                };
+                blogCategoryList.Add(blogCategory);
+            }
+            blog.BlogCategories = blogCategoryList;
+
             var blogImg = Path.Combine(Constants.ImageFolderPath, "blog");
             var fileName = await FileUtil.GenerateFileAsync(blogImg, blog.Photo);
             blog.Image = fileName;

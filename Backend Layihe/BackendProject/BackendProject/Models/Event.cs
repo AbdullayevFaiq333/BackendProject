@@ -21,5 +21,6 @@ namespace BackendProject.Models
         public IFormFile Photo { get; set; }
 
         public EventDetail EventDetail { get; set; }
+        public ICollection<EventCategory> EventCategories { get; set; }
     }
 }

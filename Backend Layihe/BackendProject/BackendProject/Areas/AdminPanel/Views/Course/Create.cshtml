@@ -80,7 +80,15 @@
                         <input asp-for="CourseDetail.CourseFee" class="form-control" placeholder="CourseFee">
                         <span asp-validation-for="CourseDetail.CourseFee" class="text-danger"></span>
                     </div>
-                    
+                    <div class="form-group" id="categoryInput">
+                        <label>Categories</label>
+                        <select class="form-control" name="CategoryId" id="category" multiple>
+                            @foreach (Category item in ViewBag.Categories)
+                            {
+                                <option value="@item.Id">@item.Title</option>
+                            }
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary mr-2">Create</button>
                     <a asp-action="Index" class="btn btn-secondary">Go back</a>
                 </form>

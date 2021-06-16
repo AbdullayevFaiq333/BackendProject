@@ -2,6 +2,7 @@
 using BackendProject.Data;
 using BackendProject.Models;
 using BackendProject.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 namespace BackendProject.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
+    [Authorize(Roles = RoleConstants.AdminRole)]
     public class UserController : Controller
     {
         private readonly AppDbContext _context;

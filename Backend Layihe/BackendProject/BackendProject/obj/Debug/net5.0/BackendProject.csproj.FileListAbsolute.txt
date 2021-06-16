@@ -365,3 +365,7 @@ C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProje
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\MyCourse\Index.cshtml.g.cs
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\MyCourse\Update.cshtml.g.cs
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\MyCourse\Detail.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Category\Index.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Category\Create.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Category\Update.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Category\Delete.cshtml.g.cs

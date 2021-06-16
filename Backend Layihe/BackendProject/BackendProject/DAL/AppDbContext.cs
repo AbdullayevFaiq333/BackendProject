@@ -39,5 +39,9 @@ namespace BackendProject.DAL
         public DbSet<Speaker> Speakers { get; set; }
         public DbSet<EventDetailSpeaker> EventDetailSpeakers { get; set; }
         public DbSet<Subcribe> Subcribes { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<BlogCategory> BlogCategories { get; set; }
+        public DbSet<CourseCategory> CourseCategories { get; set; }
+        public DbSet<EventCategory> EventCategories { get; set; }
     }
 }

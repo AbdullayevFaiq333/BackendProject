@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 namespace BackendProject.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
+    //[Authorize(Roles = RoleConstants.AdminRole)]
     public class SpeakerController : Controller
     {
         private readonly AppDbContext _context;

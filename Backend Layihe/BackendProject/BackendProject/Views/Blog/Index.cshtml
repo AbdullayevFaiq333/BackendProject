@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Blog>
 @{
     ViewData["Title"] = "Blog";
 }
@@ -26,34 +26,65 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="old-Blog">
-            @await Component.InvokeAsync("Blog", new { count = 9, page = ViewBag.Page })
-        </div>
-        <div class="row" id="new-Blog">
+        @if (Model.Count() == 0)
+        {
+            <div class="row" id="old-Blog">
+                @await Component.InvokeAsync("Blog", new { count = 9, page = ViewBag.Page })
+            </div>
+            <div class="row" id="new-Blog">
 
-        </div>
-        <div class="row" id="pagination-Blog">
-            <div class="col-xs-12">
-                <div class="pagination">
-                    <ul>
-                        @for (int i = 1; i <= ViewBag.PageCount; i++)
-                        {
-                            @if (ViewBag.Page == i)
+            </div>
+            <div class="row" id="pagination-Blog">
+                <div class="col-xs-12">
+                    <div class="pagination">
+                        <ul>
+                            @for (int i = 1; i <= ViewBag.PageCount; i++)
                             {
-                                <li class="disabled"><a asp-controller="Blog" asp-action="Index" asp-route-page="@i">@i</a></li>
+                                @if (ViewBag.Page == i)
+                                {
+                                    <li class="disabled"><a asp-controller="Blog" asp-action="Index" asp-route-page="@i">@i</a></li>
+                                }
+                                else
+                                {
+                                    <li><a asp-controller="Blog" asp-action="Index" asp-route-page="@i">@i</a></li>
+                                }
+
                             }
-                            else
-                            {
-                                <li><a asp-controller="Blog" asp-action="Index" asp-route-page="@i">@i</a></li>
-                            }
-
-                        }
 
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="row" id="blog-list">
+                @foreach (Blog blog in Model)
+                {
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="single-blog mb-60">
+                            <div class="blog-img">
+                                <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id"><img src="~/img/blog/@blog.Image" alt="blog"></a>
+                                <div class="blog-hover">
+                                    <i class="fa fa-link"></i>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-top">
+                                    <p>@blog.Name  /  @blog.Time.ToString("dd MMMM , yyyy")  /  <i class="fa fa-comments-o"></i> @blog.MessageCount</p>
+                                </div>
+                                <div class="blog-bottom">
+                                    <h2><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">@Html.Raw(blog.MainDescription) </a></h2>
+                                    <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
     </div>
 </div>
 <!-- Blog End -->

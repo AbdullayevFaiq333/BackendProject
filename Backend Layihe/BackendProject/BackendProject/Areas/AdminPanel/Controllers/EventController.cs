@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 namespace BackendProject.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
+    //[Authorize(Roles = RoleConstants.AdminRole)]
     public class EventController : Controller
     {
         private readonly AppDbContext _context;
@@ -45,7 +46,8 @@ namespace BackendProject.Areas.AdminPanel.Controllers
 
         public IActionResult Create()
         {
-            
+            var categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Categories = categories;
             return View();
         }
 
@@ -53,9 +55,10 @@ namespace BackendProject.Areas.AdminPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Event eventt)
+        public async Task<IActionResult> Create(Event eventt, int[] categoryId)
         {
-            
+            var categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Categories = categories;
 
             if (eventt.Photo == null)
             {
@@ -77,6 +80,24 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             {
                 return View();
             }
+            
+            if (categoryId.Length == 0)
+            {
+                ModelState.AddModelError("", "Please select category.");
+                return View(eventt);
+            }
+
+            var eventCategoryList = new List<EventCategory>();
+            foreach (var item in categoryId)
+            {
+                var eventCategory = new EventCategory
+                {
+                    CategoryId = item,
+                    EventId = eventt.Id
+                };
+                eventCategoryList.Add(eventCategory);
+            }
+            eventt.EventCategories = eventCategoryList;
 
             var eventImg = Path.Combine(Constants.ImageFolderPath, "event");
             var fileName = await FileUtil.GenerateFileAsync(eventImg, eventt.Photo);

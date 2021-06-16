@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace BackendProject.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
+    //[Authorize(Roles = RoleConstants.AdminRole)]
     public class DashboardController : Controller
     {
         public IActionResult Index()

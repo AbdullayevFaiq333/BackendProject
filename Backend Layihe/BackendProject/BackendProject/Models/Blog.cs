@@ -24,5 +24,6 @@ namespace BackendProject.Models
 
         [NotMapped]
         public IFormFile Photo { get; set; }
+        public ICollection<BlogCategory> BlogCategories { get; set; }
     }
 }
