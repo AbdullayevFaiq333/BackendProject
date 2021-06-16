@@ -74,6 +74,27 @@ namespace BackendProject.Controllers
             return PartialView("_SearchCoursePartial");
         }
 
+        public async Task<IActionResult> GlobalSearch(string search)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                return NotFound();
+            }
+
+            var searchViewModel = new SearchViewModel
+            {
+                Blogs = await _context.Blogs.Where(x => x.IsDeleted == false && x.Name.Contains(search.ToLower()))
+                                .OrderByDescending(x => x.Id).Take(4).ToListAsync(),
+                Courses = await _context.Courses.Where(x => x.IsDeleted == false && x.Name.Contains(search.ToLower()))
+                                .OrderByDescending(x => x.Id).Take(4).ToListAsync(),
+                Events = await _context.Events.Where(x => x.IsDelete == false && x.Title.Contains(search.ToLower()))
+                                .OrderByDescending(x => x.Id).Take(4).ToListAsync(),
+                Teachers = await _context.Teachers.Where(x => x.IsDeleted == false && x.Name.Contains(search.ToLower())).Take(4).ToListAsync()
+            };
+
+            return PartialView("_SearchViewPartial", searchViewModel);
+        }
+
         public async Task<IActionResult> Subscribe(string email)
         {
             if (email == null)

@@ -13,5 +13,8 @@ namespace BackendProject.Models
         public string Fullname { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public ICollection<Course> Courses { get; set; }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BackendProject.DAL;
+using BackendProject.Data;
 using BackendProject.Models;
 using BackendProject.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -87,6 +88,9 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             if (user == null)
                 return NotFound();
 
+            var courses = await _context.Courses.Where(x => x.IsDeleted == false).ToListAsync();
+            ViewBag.Courses = courses;
+
             var changeRoleViewModel = new ChangeRoleViewModel
             {
                 Username = user.UserName,
@@ -100,14 +104,60 @@ namespace BackendProject.Areas.AdminPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ChangeRole(string id, string Role)
+        public async Task<IActionResult> ChangeRole(string id,ChangeRoleViewModel changeRoleViewModel, List<int> coursesId,string Role)
         {
             if (string.IsNullOrEmpty(id))
                 return NotFound();
 
+            var courses = await _context.Courses.Where(x => x.IsDeleted == false).ToListAsync();
+            ViewBag.Courses = courses;
+
             var user = await _userManager.FindByIdAsync(id);
             if (user == null)
                 return NotFound();
+
+            var dbChangeRoleViewModel = new ChangeRoleViewModel
+            {
+                Username = user.UserName,
+                Role = (await _userManager.GetRolesAsync(user)).FirstOrDefault(),
+                Roles = new List<string> { "Admin", "CourseModerator", "User" }
+            };
+
+            if (Role.ToLower() == RoleConstants.CourseModeratorRole.ToLower())
+            {
+                if (coursesId.Count == 0)
+                {
+                    ModelState.AddModelError("", "Please select category.");
+                    return View(dbChangeRoleViewModel);
+                }
+                foreach (var courseId in coursesId)
+                {
+                    var dbCourses = await _context.Courses.Where(x => x.IsDeleted == false && x.Id == courseId)
+                        .ToListAsync();
+                    if (dbCourses == null)
+                        return NotFound();
+
+                    List<Course> courseList = new List<Course>();
+
+
+                    foreach (var dbCourse in dbCourses)
+                    {
+                        dbCourse.UserId = user.Id;
+                        if (user.Courses != null)
+                        {
+                            user.Courses.Add(dbCourse);
+                        }
+                        else
+                        {
+                            courseList.Add(dbCourse);
+                        }
+                    }
+                    if (user.Courses == null)
+                    {
+                        user.Courses = courseList;
+                    }
+                }
+            }
 
             string oldRole = (await _userManager.GetRolesAsync(user))[0];
             await _userManager.RemoveFromRoleAsync(user, oldRole);

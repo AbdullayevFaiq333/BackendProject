@@ -362,3 +362,6 @@ C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProje
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\_SearchEventPartial.cshtml.g.cs
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\_SearchTeacherPartial.cshtml.g.cs
 C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\_SearchViewPartial.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\MyCourse\Index.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\MyCourse\Update.cshtml.g.cs
+C:\Users\Admin\Desktop\BackendProject\Backend Layihe\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\MyCourse\Detail.cshtml.g.cs

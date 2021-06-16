@@ -66,11 +66,11 @@ $(document).ready(function () {
         search = $(this).val().trim();
 
 
-        $(`#home-search #global-search`).remove();
+        $(`#home-search .li`).remove();
 
         if (se.length>0) {
             $.ajax({
-                url: '/Home/Search/',
+                url: '/Home/GlobalSearch/',
                 type: "GET",
                 data: {
                     "search": search,

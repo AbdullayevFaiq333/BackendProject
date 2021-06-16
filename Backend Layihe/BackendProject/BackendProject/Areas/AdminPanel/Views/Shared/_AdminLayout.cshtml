@@ -169,29 +169,17 @@
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="mdi mdi-home menu-icon"></i>
-                            <span class="menu-title">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                            <i class="mdi mdi-circle-outline menu-icon"></i>
-                            <span class="menu-title">Categories</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" asp-area="AdminPanel" asp-controller="Category" asp-action="Index">Category List</a></li>
-                                <li class="nav-item"> <a class="nav-link" asp-area="AdminPanel" asp-controller="Category" asp-action="Create">Add New Category</a></li>
-                            </ul>
-                        </div>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" asp-area="AdminPanel" asp-controller="Course" asp-action="Index">
                             <i class="mdi mdi-view-headline menu-icon"></i>
                             <span class="menu-title">Course</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="AdminPanel" asp-controller="MyCourse" asp-action="Index">
+                            <i class="mdi mdi-view-headline menu-icon"></i>
+                            <span class="menu-title">My Course</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -224,19 +212,14 @@
                             <span class="menu-title">Speaker</span>
                         </a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" asp-area="AdminPanel" asp-controller="User" asp-action="Index">
                             <i class="mdi mdi-account menu-icon"></i>
                             <span class="menu-title">Users</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="documentation/documentation.html">
-                            <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-                            <span class="menu-title">Documentation</span>
-                        </a>
-                    </li>
+                    
                 </ul>
             </nav>
             <!-- partial -->
