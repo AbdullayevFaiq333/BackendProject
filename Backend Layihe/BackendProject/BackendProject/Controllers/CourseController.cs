@@ -25,7 +25,7 @@ namespace BackendProject.Controllers
 
             if (categoryId == null)
             {
-                ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Courses.Where(x => x.IsDeleted == false).Count() / 9);
+                ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Courses.Where(x => x.IsDeleted == false).Count() / 6);
                 ViewBag.Page = page;
 
                 if (ViewBag.PageCount < page || page <= 0)

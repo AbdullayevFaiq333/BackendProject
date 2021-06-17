@@ -24,7 +24,8 @@ namespace BackendProject.Areas.AdminPanel.Controllers
         public IActionResult Index()
         {
             var speakers = _context.Speakers.Where(x => x.IsDelete == false).Include(x => x.EventDetailSpeakers)
-                                           .ThenInclude(x => x.EventDetail).ThenInclude(x => x.Event).ToList();
+                                           .ThenInclude(x => x.EventDetail).ThenInclude(x => x.Event)
+                                           .Where(x => x.IsDelete == false).ToList();
 
 
             return View(speakers);
