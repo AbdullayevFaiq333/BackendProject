@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Detail";
-    EventDetail eventDetail = Model;
+    EventViewModel eventViewModel = Model;
 }
 
 <!-- Banner Area Start -->
@@ -14,22 +14,22 @@
             <div class="col-md-8">
                 <div class="event-details">
                     <div class="event-details-img">
-                        <img src="~/img/event/@eventDetail.Event.Image" alt="event-details">
+                        <img src="~/img/event/@eventViewModel.Event.Image" alt="event-details">
                         <div class="event-date">
                             <h3>20 <span>jun</span></h3>
                         </div>
                     </div>
                     <div class="event-details-content">
-                        <h2>@eventDetail.Event.Title</h2>
+                        <h2>@eventViewModel.Event.Title</h2>
                         <ul>
-                            <li><span>time : </span>@eventDetail.Event.TimeStart.ToString("t") -  @eventDetail.Event.TimeEnd.ToString("t")</li>
-                            <li><span>venue : </span>@eventDetail.Event.Venue</li>
+                            <li><span>time : </span>@eventViewModel.Event.TimeStart.ToString("t") -  @eventViewModel.Event.TimeEnd.ToString("t")</li>
+                            <li><span>venue : </span>@eventViewModel.Event.Venue</li>
                         </ul>
-                        <p>@Html.Raw(eventDetail.Description)</p>
+                        <p>@Html.Raw(eventViewModel.Event.EventDetail.Description)</p>
                         
                         <div class="speakers-area fix">
                             <h4>speakers</h4>
-                            @foreach (EventDetailSpeaker eventDetailSpeaker in eventDetail.EventDetailSpeakers)
+                            @foreach (EventDetailSpeaker eventDetailSpeaker in eventViewModel.Event.EventDetail.EventDetailSpeakers)
                             {
                                 <div class="single-speaker">
                                     <div class="speaker-img">
@@ -88,12 +88,10 @@
                     <div class="single-blog-widget mb-50">
                         <h3>categories</h3>
                         <ul>
-                            <li><a href="#">CSS Engineering (10)</a></li>
-                            <li><a href="#">Political Science (12)</a></li>
-                            <li><a href="#">Micro Biology (08)</a></li>
-                            <li><a href="#">HTML5 &amp; CSS3 (15)</a></li>
-                            <li><a href="#">Web Design (20)</a></li>
-                            <li><a href="#">PHP (23)</a></li>
+                            @foreach (var category in eventViewModel.Categories)
+                            {
+                                <li><a asp-action="Index" asp-route-categoryId="@category.Id">@category.Title (@category.EventCategories.Count)</a></li>
+                            }
                         </ul>
                     </div>
                     <div class="single-blog-widget mb-50">

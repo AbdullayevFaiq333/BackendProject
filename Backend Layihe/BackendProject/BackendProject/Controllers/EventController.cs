@@ -1,4 +1,6 @@
 ﻿using BackendProject.DAL;
+using BackendProject.Models;
+using BackendProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,30 +18,54 @@ namespace BackendProject.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int? page = 1)
+        public IActionResult Index(int? categoryId, int? page = 1)
         {
-            ViewBag.PageCount = Math.Ceiling((decimal)_context.Events.Count() / 6);
-            ViewBag.Page = page;
-            var events = _context.Events.Where(c => c.IsDelete == false).ToList();
+            var events = new List<Event>();
 
-            return View(events);
+            if (categoryId == null)
+            {
+                ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Events.Where(x => x.IsDelete == false).Count() / 6);
+                ViewBag.Page = page;
+
+                if (ViewBag.PageCount < page || page <= 0)
+                    return NotFound();
+
+                return View(events);
+            }
+            else
+            {
+                var categoryEvents = _context.EventCategories.Where(x => x.CategoryId == categoryId)
+                    .Include(x => x.Event).Where(x => x.Event.IsDelete == false).OrderByDescending(x => x.Event.Id);
+                foreach (var categoryEvent in categoryEvents)
+                {
+                    events.Add(categoryEvent.Event);
+                }
+                return View(events);
+            }
         }
-        public IActionResult Detail(int? id)
+        public async Task<IActionResult> Detail(int? id)
         {
             if (id == null)
                 return NotFound();
 
-            var eventDetail = _context.EventDetail.Where(x => x.IsDelete == false).Include(x => x.Event).ThenInclude(y => y.EventDetail)
+            var blog = await _context.Blogs.Where(x => x.IsDeleted == false)
+                .Include(x => x.BlogDetail).FirstOrDefaultAsync(x => x.Id == id);
+
+            var eventt = _context.EventDetail.Where(x => x.IsDelete == false).Include(x => x.Event).ThenInclude(y => y.EventDetail)
                                                     .Include(t => t.EventDetailSpeakers).ThenInclude(t => t.Speaker)
                                                     .OrderByDescending(t => t.Id).FirstOrDefault(z => z.EventId == id);
 
-
-            
-
-            if (eventDetail == null)
+            if (eventt == null)
                 return NotFound();
 
-            return View(eventDetail);
+            var eventViewModel = new EventViewModel
+            {
+                Categories = await _context.Categories.Include(x => x.EventCategories.Where(y => y.Event.IsDelete == false)).ThenInclude(x => x.Event).Where(x => x.IsDeleted == false).ToListAsync(),
+                Event = eventt.Event
+            };
+
+
+            return View(eventViewModel);
         }
     }
 }
